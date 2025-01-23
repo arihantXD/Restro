@@ -10,7 +10,6 @@ import {
   SidebarMenuItem,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { PageProps } from "@/app/dashboard/layout";
 
 // Menu items.
 const items = [
