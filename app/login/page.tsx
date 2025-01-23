@@ -30,7 +30,6 @@ import Logo from "@/components/custom/Logo";
 
 const Page = () => {
   const router = useRouter();
-
   const loginForm = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
