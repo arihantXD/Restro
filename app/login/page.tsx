@@ -149,7 +149,7 @@ const Page = () => {
             <CardHeader>
               <CardTitle>Register</CardTitle>
               <CardDescription>
-                Change your password here. After saving, you'll be logged out.
+                Change your password here. After saving, youll be logged out.
               </CardDescription>
             </CardHeader>
             <CardContent>

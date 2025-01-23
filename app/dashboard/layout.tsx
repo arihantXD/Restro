@@ -12,7 +12,7 @@ const page = ({ children }: PageProps) => {
     <div>
       <div className="hidden md:block">
         <SidebarProvider>
-          <AppSidebar children={children} />
+          <AppSidebar />
         </SidebarProvider>
       </div>
       <div className="md:hidden">

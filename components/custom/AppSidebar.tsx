@@ -9,7 +9,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
-  useSidebar,
 } from "@/components/ui/sidebar";
 import { PageProps } from "@/app/dashboard/layout";
 
@@ -42,7 +41,7 @@ const items = [
   },
 ];
 
-export function AppSidebar({ children }: PageProps) {
+export function AppSidebar() {
   return (
     <div className="flex">
       <Sidebar collapsible="icon">
@@ -68,7 +67,7 @@ export function AppSidebar({ children }: PageProps) {
       </Sidebar>
       <div>
         <SidebarTrigger />
-        {children}
+        Order
       </div>
     </div>
   );
