@@ -34,16 +34,19 @@ const page = () => {
   const handleSubmit = () => {};
   return (
     <div className="px-2 mt-4">
-      <div className="my-2">
-        <h3 className="text-xs">Step 1</h3>
-        <h1 className="">Setup my Restro</h1>
+      <div className="my-2 ">
+        <h1 className="text-pink-600">Setup My Restro</h1>
+        <p className="text-xs">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto
+          praesentium, rem asperiores accusantium consequuntur explicabo!
+        </p>
       </div>
-      <div className="my-4 text-sm">
+      <div className="my-6 text-sm">
         <div className="">
           <h3 className="">Restaurant Information</h3>
           <Form {...restaurantForm}>
             <form onSubmit={restaurantForm.handleSubmit(handleSubmit)}>
-              <div className="space-y-4 mt-2">
+              <div className="space-y-2 mt-2">
                 <FormField
                   control={restaurantForm.control}
                   name="name"
@@ -105,7 +108,7 @@ const page = () => {
                   }}
                 />
                 <div className="space-y-2">
-                  <h3 className="mt-7 block">Owner Information</h3>
+                  <h3 className="mt-4 block">Owner Information</h3>
                   <FormField
                     control={restaurantForm.control}
                     name="ownerName"

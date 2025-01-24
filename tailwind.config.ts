@@ -60,16 +60,17 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // screens: {
-        //   sm: "576px",
-        //   md: "960px",
-        //   lg: "1440px",
-        // },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      screens: {
+        xs: "400px",
+        sm: "550px",
+        md: "850px",
+        lg: "1440px",
       },
     },
   },

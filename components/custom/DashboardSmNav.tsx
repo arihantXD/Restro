@@ -9,20 +9,6 @@ import { Button } from "../ui/button";
 import Logo from "./Logo";
 
 const DashboardSmNav = () => {
-  const icons = [
-    {
-      icon: Store,
-      text: "My Restaurant",
-    },
-    {
-      icon: PackageOpen,
-      text: "Products",
-    },
-    {
-      icon: HandPlatter,
-      text: "Orders",
-    },
-  ];
   return (
     <div className="px-3 py-1 flex justify-between items-center w-screen border-b border-1">
       <div>
@@ -30,18 +16,6 @@ const DashboardSmNav = () => {
       </div>
       <div className="flex gap-3">
         <TooltipProvider>
-          {/* {icons.map((icon) => {
-            return (
-              <Tooltip key={icon.text}>
-                <TooltipTrigger asChild>
-                  <Button variant="secondary">{<icon.icon />}</Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{icon.text}</p>
-                </TooltipContent>
-              </Tooltip>
-            );
-          })} */}
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="link">AK</Button>

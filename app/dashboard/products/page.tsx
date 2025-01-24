@@ -29,8 +29,8 @@ const page = () => {
   return (
     <div className="px-2 mt-4">
       <div className="my-2">
-        <h3 className="text-xs">Step 1</h3>
-        <h1 className="">Setup my Restro</h1>
+        <h3 className="text-xs">Step 2</h3>
+        <h1 className="">Create</h1>
       </div>
       <div className="my-4 text-sm">
         <div className="">
