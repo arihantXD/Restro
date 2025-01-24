@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import { HandPlatter, PackageOpen, Store } from "lucide-react";
@@ -26,18 +27,16 @@ const page = () => {
             <h1 className="text-4xl">The Bistro Cafe</h1>
             <h3 className="text-gray-500 text-lg">Owner - Arihant Kamde</h3>
           </div>
-          <div className="mt-2 text-xs">
+          <div className="mt-1 text-xs px-1">
             <h3>
-              <span className="font-medium text-base">Created</span>{" "}
               <span className="text-gray-600"> 03/02/2015</span>
             </h3>
             <h3>
-              <span className="font-medium text-base">Location</span>{" "}
               <span className="text-gray-600">Indrapuri colony, Indore</span>
             </h3>
           </div>
           <div className="mt-4 flex gap-2">
-            <Button variant="default" size="sm">
+            <Button variant="outline" size="sm">
               Visit The Bistro
             </Button>
             <Button variant="destructive" size="sm">
@@ -48,7 +47,7 @@ const page = () => {
         <div className="mt-7 ">
           <h1 className="text-3xl">Restro Stats</h1>
         </div>
-        <div className="[&>*]:min-w-[230px] [&>*]:w-[90%] sm:[&>*]:max-w-[250px]  flex flex-col items-center sm:flex-row sm:flex-wrap md:justify-between mt-3 gap-4">
+        <div className="[&>*]:min-w-[230px] [&>*]:w-[95%] sm:[&>*]:max-w-[250px]  flex flex-col items-center sm:flex-row sm:flex-wrap md:justify-between mt-3 gap-4">
           <Card>
             <div className="flex justify-between items-center">
               <CardHeader>

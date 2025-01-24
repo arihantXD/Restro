@@ -49,23 +49,54 @@ const Page = () => {
   });
 
   const handleLogin = async (data: z.infer<typeof loginSchema>) => {
-    console.log("data ---------> ", data);
-    const result = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    });
-
-    router.push("/dashboard");
-    console.log(result);
+    try {
+      const result = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+      if (result && result.status === 200) {
+        toast({
+          title: "User logged in successfully",
+          className: "w-[350px] flex justify-center mx-auto max-w-full",
+          duration: 2000,
+        });
+        router.push("/dashboard/restro");
+      } else {
+        toast({
+          title: "Wrong credentials, try again",
+          className: "w-[350px] flex justify-center mx-auto max-w-full",
+          duration: 2000,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "User login failed, internal issue",
+        className: "w-[350px] flex justify-center mx-auto max-w-full",
+        duration: 2000,
+      });
+    }
   };
 
   const handleRegister = async (data: z.infer<typeof registerSchema>) => {
-    const result = await axios.post("/api/register", data);
-    console.log(result);
-    if (result.status === 201) {
+    try {
+      const result = await axios.post("/api/register", data);
+      if (result.status === 201) {
+        toast({
+          title: "User registered successfully, please login",
+          className: "w-[350px] flex justify-center mx-auto max-w-full",
+        });
+      } else {
+        toast({
+          title: "User registration failed",
+          className: "w-[350px] flex justify-center mx-auto max-w-full",
+        });
+      }
+    } catch (error) {
       toast({
-        title: result.data.message,
+        title: "User not register, internal issue",
+        className: "w-[350px] flex justify-center mx-auto max-w-full",
+        duration: 2000,
       });
     }
   };
@@ -80,7 +111,7 @@ const Page = () => {
         <TabsContent value="account">
           <Card>
             <CardHeader>
-              <CardTitle className="w-fit mx-auto">
+              <CardTitle className="mb-2 mx-auto">
                 <Logo />
               </CardTitle>
               <CardDescription>
@@ -146,9 +177,11 @@ const Page = () => {
         <TabsContent value="password">
           <Card>
             <CardHeader>
-              <CardTitle>Register</CardTitle>
-              <CardDescription>
-                Change your password here. After saving, youll be logged out.
+              <CardTitle className="mb-2 mx-auto">
+                <Logo />
+              </CardTitle>
+              <CardDescription className="">
+                Register your self to start working.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -234,7 +267,7 @@ const Page = () => {
                   </div>
                   <Button
                     className="mt-5 w-full"
-                    variant="outline"
+                    variant="default"
                     type="submit"
                     onSubmit={registerForm.handleSubmit(handleRegister)}
                   >

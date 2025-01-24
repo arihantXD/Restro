@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { TypeOf, z } from "zod";
 import { restaurantSchema } from "@/schemas/RestaurantSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -20,8 +20,12 @@ import {
   SelectContent,
   Select,
 } from "@/components/ui/select";
+import axios from "axios";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
   const restaurantForm = useForm<z.infer<typeof restaurantSchema>>({
     resolver: zodResolver(restaurantSchema),
     defaultValues: {
@@ -31,9 +35,35 @@ const page = () => {
       ownerName: "Arihant Kamde",
     },
   });
-  const handleSubmit = () => {};
+  const handleSubmit = async (data: z.infer<typeof restaurantSchema>) => {
+    try {
+      const result = await axios.post("/api/restaurants", data);
+      console.log(result != null, result.status === 201);
+
+      if (result && result.status === 201) {
+        toast({
+          title: "Restro registered successfully",
+          className: "w-[350px] flex justify-center mx-auto max-w-full",
+          duration: 2000,
+        });
+        router.push("/dashboard");
+      } else {
+        toast({
+          title: "Setup failed, data is incorrect",
+          className: "w-[350px] flex justify-center mx-auto max-w-full",
+          duration: 2000,
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Setup failed, internal issue",
+        className: "w-[350px] flex justify-center mx-auto max-w-full",
+        duration: 2000,
+      });
+    }
+  };
   return (
-    <div className="px-2 mt-4">
+    <div className="px-2 mt-4 max-w-[700px] mx-auto">
       <div className="my-2 ">
         <h1 className="text-pink-600">Setup My Restro</h1>
         <p className="text-xs">
@@ -43,10 +73,10 @@ const page = () => {
       </div>
       <div className="my-6 text-sm">
         <div className="">
-          <h3 className="">Restaurant Information</h3>
+          <h3 className="text-lg">Restaurant Information</h3>
           <Form {...restaurantForm}>
             <form onSubmit={restaurantForm.handleSubmit(handleSubmit)}>
-              <div className="space-y-2 mt-2">
+              <div className="space-y-4 mt-2">
                 <FormField
                   control={restaurantForm.control}
                   name="name"
@@ -107,8 +137,10 @@ const page = () => {
                     );
                   }}
                 />
-                <div className="space-y-2">
-                  <h3 className="mt-4 block">Owner Information</h3>
+                <div className="py-6 space-y-4">
+                  <div className="text-lg">
+                    <h3 className="">Owner Information</h3>
+                  </div>
                   <FormField
                     control={restaurantForm.control}
                     name="ownerName"
@@ -151,7 +183,7 @@ const page = () => {
               </div>
               <Button
                 onSubmit={restaurantForm.handleSubmit(handleSubmit)}
-                className="mt-5 w-full"
+                className="mt-4 w-full"
                 variant="default"
                 type="submit"
               >

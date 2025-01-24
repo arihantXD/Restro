@@ -10,7 +10,7 @@ import Logo from "./Logo";
 
 const DashboardSmNav = () => {
   return (
-    <div className="px-3 py-1 flex justify-between items-center w-screen border-b border-1">
+    <div className="px-3 py-1 flex justify-between items-center border-b border-1">
       <div>
         <Logo />
       </div>

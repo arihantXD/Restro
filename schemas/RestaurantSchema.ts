@@ -1,4 +1,4 @@
-import { Restaurant } from "@/enums/RestaurantEnum";
+import { RestaurantType } from "@/enums/RestaurantTypeEnum";
 import { z } from "zod";
 
 export const restaurantSchema = z.object({
@@ -7,6 +7,8 @@ export const restaurantSchema = z.object({
   ownerEmail: z.string().email().nonempty("Name can not be empty"),
   address: z.string().min(5).nonempty("Name can not be empty"),
   type: z
-    .enum(Object.values(Restaurant) as [Restaurant, ...Restaurant[]])
-    .default(Restaurant.CAFE),
+    .enum(
+      Object.values(RestaurantType) as [RestaurantType, ...RestaurantType[]]
+    )
+    .default(RestaurantType.CAFE),
 });

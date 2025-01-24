@@ -2,7 +2,7 @@ import { Cat, PawPrint } from "lucide-react";
 
 const Logo = () => {
   return (
-    <div className="text-lg font-medium flex items-center relative">
+    <div className="text-lg font-medium flex items-center relative w-fit">
       Restro
       <Cat
         className="text-pink-600 -top-[5px] -left-[5px] -rotate-12 absolute"
